@@ -11,17 +11,6 @@ volatile int btn_flag = 0;
 
 void btn_callback(uint gpio, uint32_t events) {
   if (events == 0x4) { // fall edge
-
-    printf("btn pressed \n");
-
-    while (!gpio_get(BTN_PIN_R)) {
-      sleep_ms(1);
-    }
-
-
-    printf("btn released \n");
-
-    sleep_ms(1);
     btn_flag = 1;
   }
 }
@@ -38,12 +27,22 @@ int main() {
   
   while (1) {
     if (btn_flag) {
+      printf("btn pressed \n");
+
+      while (!gpio_get(BTN_PIN_R)) {
+        sleep_ms(1);
+      }
+
+      printf("btn released \n");
+
       capture_flag = 1;
       btn_flag = 0;
     }
 
     if (capture_flag) {
+      capture_flag = 0;
     }
-
+    
+    sleep_ms(1);
   }
 }
