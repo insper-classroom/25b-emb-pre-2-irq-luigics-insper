@@ -9,9 +9,13 @@ volatile int btn_flag_r = 0;
 volatile int btn_flag_g = 0;
 
 void btn_callback(uint gpio, uint32_t events) {
-    if (events == 0x4) {  // fall edge
-        btn_flag_g = 1;
-        btn_flag_r = 1;
+    if (events == 0x4 && GPIO_IRQ_EDGE_FALL) {  // fall edge
+        if(gpio == BTN_PIN_G){
+            btn_flag_g = 1;
+        } else if(gpio == BTN_PIN_R){
+            btn_flag_r = 1;
+        }
+        
     }
 }
 
