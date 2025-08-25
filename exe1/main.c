@@ -3,7 +3,7 @@
 #include <stdio.h>
 
 const int BTN_PIN_R = 28;
-volatile char r_but_flag;
+volatile char r_but_flag = 0;
 
 void btn_callback(uint gpio, uint32_t events) {
   if (events == 0x4) { // fall edge
