@@ -25,16 +25,15 @@ int main() {
   gpio_set_irq_enabled_with_callback(
       BTN_PIN_R, GPIO_IRQ_EDGE_RISE | GPIO_IRQ_EDGE_FALL, true, &btn_callback);
 
-  // while (1) {
-  //   if(desc){
-  //     printf("btn pressed \n");
-  //     sleep_ms(1);
-  //     desc = 0;
-  //   }
-  //   if(sub){
-  //     printf("btn released \n");
-  //     sub = 0;
-  //   }
-  // } 
-  
+  while (1) {
+    if(desc){
+      printf("fall\n");
+      sleep_ms(1);
+      desc = 0;
+    }
+    if(sub){
+      printf("rise\n");
+      sub = 0;
+    }
+  } 
 }
