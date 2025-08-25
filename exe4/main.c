@@ -11,11 +11,11 @@ const int LED_PIN_G = 6;
   
 
 void btn_callback(uint gpio, uint32_t events) {
-    if (events == 0x4) {  // GPIO_IRQ_EDGE_FALL = event 0x04 /fall edge
+    if (events == 0x4) {  // GPIO_IRQ_EDGE_FALL = event 0x4 /fall edge
         if(gpio == BTN_PIN_R){
             btn_flag_r = 1;
         }
-    } else if(events == 0x8){ //   GPIO_IRQ_EDGE_RISE = event 0x08
+    } else if(events == 0x8){ //   GPIO_IRQ_EDGE_RISE = event 0x8
         if(gpio == BTN_PIN_G){
             btn_flag_g = 1;
         }
